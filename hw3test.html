@@ -44,17 +44,19 @@
 			
 			if (key == chosenLetter) {
 				wins++;
+				guesses = [];
+				numGuess = 9;
 				results();
 				chosenLetter = options[Math.floor(Math.random() * options.length)];
 			}
 
 			else if (key != chosenLetter) {
-				if (guesses.length < 9) {
+				if (numGuess > 0) {
 					guesses.push(key);
 					numGuess--;
 					results();
 				}
-				else if (guesses.length = 9) {
+				else if (numGuess = 0) {
 					loss++;
 					numGuess = 9;
 					guesses = [""];

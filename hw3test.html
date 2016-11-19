@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Homework 3</title>
+  </head>
+
+  <body>
+  	<div id="game">
+  		<p>Guess the random letter I'm thinking of! Press a letter to play!</p>
+	</div>
+
+	<script type="text/javascript">
+
+		//array of possible letter choices
+		var randomLetter = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+
+		//variables for active/wins/losses/guesses remaining
+		var active = 0;
+		var wins = 0;
+		var losses = 0;
+		var guesses = 0;
+
+
+		//when key pressed, contained function runs
+		document.onkeyup = function(event) {
+
+			//if statement directing on key processes - if active = 0, pick random letter from randomLetter array, set guesses equal to 10, set active to 1. run game
+
+			if (active === 0) {
+
+				//sets chosenLetter to variable equal to a random choice from the randomLetter array
+				var chosenLetter = randomLetter[Math.floor(Math.random() * randomLetter.length)];
+				
+				guesses = 10;
+
+				active = 1;
+
+				//if statement to repeat the guessing process for guesses number of times
+				if (guesses > 0) {
+
+					//determine which key was pressed, make it lowercase, and set it to the userGuess variable.
+					var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
+
+					if(userGuess === chosenLetter) {
+						wins++;
+						active--;
+						// Here we create the HTML that will be injected into our div and displayed on the page.
+          				var html = "<p>Guess the random letter I'm thinking of! Press a letter to play!</p>" +
+          				"<p>wins: " + wins + "</p>" +
+          				"<p>losses: " + losses + "</p>" +
+          				"<p>guesses: " + guesses + "</p>";
+
+          				// Injecting the HTML we just created into our div and updating the game information on our page.
+          				document.querySelector("#game").innerHTML = html;
+
+					}			
+					
+					else if(userGuess != chosenLetter) {
+						guesses--;
+						var html = "<p>Guess the random letter I'm thinking of! Press a letter to play!</p>" +
+          				"<p>wins: " + wins + "</p>" +
+          				"<p>losses: " + losses + "</p>" +
+          				"<p>guesses: " + guesses + "</p>";
+
+          				// Injecting the HTML we just created into our div and updating the game information on our page.
+          				document.querySelector("#game").innerHTML = html;
+					}
+
+				}
+
+				else if(guesses = 0) {
+					active--;
+					losses++;
+					var html = "<p>Guess the random letter I'm thinking of! Press a letter to play!</p>" +
+          			"<p>wins: " + wins + "</p>" +
+          			"<p>losses: " + losses + "</p>" +
+          			"<p>guesses: " + guesses + "</p>";
+
+          			// Injecting the HTML we just created into our div and updating the game information on our page.
+          			document.querySelector("#game").innerHTML = html;
+				}
+			}
+		};
+	</script>
+</body>
+</html>

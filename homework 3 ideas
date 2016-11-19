@@ -1,0 +1,27 @@
+homework 3 ideas
+
+classic video game hangman
+
+1) mario bros
+2) metroid
+3) donkey kong
+5) mega man
+6) legend of zelda
+7) kirbys adventure
+8) castlevania
+9) pac man
+10) ice climbers
+
+pseudo code
+
+press any key to get started - uses on key command
+
+win/loss counter - multiple ways of doing it, can be jquery rewrite or document.write with a counter
+
+depending on word, show word as "_ _ _ _ _ _ _ _"
+
+number of guesses remaining - part of on key script
+
+letters already guessed - part of on key script
+
+automatically choose new word after win or loss - math.floor(math.random()*array.length)

@@ -50,19 +50,21 @@
 				chosenLetter = options[Math.floor(Math.random() * options.length)];
 			}
 
+
 			else if (key != chosenLetter) {
-				if (numGuess > 0) {
-					guesses.push(key);
-					numGuess--;
-					results();
-				}
-				else if (numGuess = 0) {
-					loss++;
+				if (guesses.length == 9) {
+					losses++;
 					numGuess = 9;
 					guesses = [""];
 					chosenLetter = options[Math.floor(Math.random() * options.length)];
 					results();
 				}
+				else if (guesses.length < 9) {
+					guesses.push(key);
+					numGuess--;
+					results();
+				}
+
 			}
 
 			
